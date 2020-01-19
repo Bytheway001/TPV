@@ -8,6 +8,7 @@ const Kitchen = props => {
     const [products,setProducts]=useState([]);
     useEffect(() => {
        getOrderList()
+       setTimeout(()=>getOrderList(),10000)
         //eslint-disable-next-line 
     }, [])
 

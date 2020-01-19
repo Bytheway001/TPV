@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
-import Table from './Table';
 import { Row, Col, Container, Card } from 'react-bootstrap';
 import TableDetail from './TableDetail';
 import { connect } from 'react-redux';
 import { getTableList, setActiveTable, closeTable } from '../../ducks/tables';
+import Mesa from './Mesa';
 
 const Hall = props => {
     useEffect(() => {
         props.getTableList()
+        setInterval(()=>{
+            props.getTableList()
+        },10000)
         //eslint-disable-next-line 
     }, [])
-  
-
-
     return (
         <Container fluid style={{ padding: 30 }}>
             <Row>
@@ -21,7 +21,7 @@ const Hall = props => {
                         <Card.Header>Mesas</Card.Header>
                         <Card.Body className='d-flex flex-wrap flex-row justify-content-center'>
                             {props.list.map((table, index) => (
-                                <Table table={table} key={index} onSwitch={props.setActiveTable} active={props.activeTable?props.activeTable.table_id === table.table_id:null} status={table.status} />
+                                <Mesa table={table} key={index} onSwitch={props.setActiveTable} active={props.activeTable?props.activeTable.table_id === table.table_id:null} status={table.status} />
                             ))}
                         </Card.Body>
                     </Card>

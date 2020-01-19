@@ -1,13 +1,16 @@
 import React from 'react';
 import './assets/scss/application.scss';
 import Main from './views/layouts/main';
+import TpvLayout from './views/layouts/tpv';
 import Hall from './views/hall/Hall';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Tpv from './views/tpv/Tpv';
 import { getTableList } from './ducks/tables';
-import {store} from './index';
+import { store } from './index';
 import ShowTable from './views/tpv/ShowTable';
 import Kitchen from './views/kitchen/Kitchen';
+import ProductsContainer from './views/products/Container';
+import ReportsContainer from './views/reports/Container';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,9 +19,8 @@ class App extends React.Component {
       ws: null
     };
   }
-
   componentDidMount() {
-    
+
   }
   timeout = 250;
 
@@ -67,10 +69,10 @@ class App extends React.Component {
         case 'updateTables':
           console.log(msg)
           store.dispatch(getTableList());
-        break;
+          break;
         default:
-         console.log(msg,'aaa')
-        break;
+          console.log(msg, 'aaa')
+          break;
       }
     }
   };
@@ -80,16 +82,15 @@ class App extends React.Component {
     if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
   };
   render() {
-
     return (
       <Router>
-        <Main>
-          <Switch>
-            <Route exact path='/' render={() => <Main shown={true}><Hall /></Main>} />
-            <Route path='/tpv' component={() => <TPVRoutes/>} />
-            <Route path='/kitchen' component={() => <Kitchen/>} />
-          </Switch>
-        </Main>
+
+        <Switch>
+          <Route path='/hall' render={() => <HallRoutes />} />
+          <Route path='/tpv' render={() => <TPVRoutes />} />
+          <Route path='/kitchen' component={() => <Kitchen />} />
+          <Route exact path='/' render={() => <Redirect to='/hall' />} />
+        </Switch>
       </Router>
     );
   }
@@ -97,11 +98,24 @@ class App extends React.Component {
 
 }
 
-const TPVRoutes=props=>{
-  return(
+const HallRoutes = props => {
+  return (
     <Switch>
-      <Route exact path='/tpv/' component={Tpv}/>
-      <Route path='/tpv/:id' component={ShowTable}/>
+      <Main>
+        <Route path='/hall/products' component={() => <ProductsContainer />} />
+        <Route exact path='/hall/reports' component={() => <ReportsContainer />} />
+        <Route exact path='/hall' render={() => <Hall />} />
+      </Main>
+    </Switch>
+  )
+}
+
+const TPVRoutes = props => {
+  return (
+    <Switch>
+     
+        <Route exact path='/tpv/' render={() => <TpvLayout> <Tpv />  </TpvLayout>} />
+        <Route path='/tpv/:id' render={(props)=><TpvLayout {...props}><ShowTable {...props}/></TpvLayout>} />
     </Switch>
   )
 }

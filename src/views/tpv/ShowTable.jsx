@@ -7,6 +7,7 @@ import OrderModal from './OrderModal';
 import Axios from 'axios';
 import { API } from '../../constants';
 const ShowTable = props => {
+   
     const [products, setProducts] = useState([]);
     useEffect(() => {
 
@@ -21,20 +22,22 @@ const ShowTable = props => {
 
     const findProductName=(productId)=>{
         if(products.length>0){
-            console.log(productId,products)
+           
             return products.find(x=>x.id===productId).name
         }
        
+    }
+    const findProductType=(productId)=>{
+        if(products.length>0){
+     
+            return products.find(x=>x.id===productId).family==='Completos'?'Completo':'Solo'
+        }
     }
 
 
     return (
         <Fragment>
-            <Navbar bg="light" expand="lg" className='d-flex justify-content-between'>
-                <Navbar.Brand as={Link} to='/tpv'>{'<-'}</Navbar.Brand>
-                <Navbar.Brand href="#home">Mesa {props.match.params.id}</Navbar.Brand>
-                <OrderModal products={products} table={props.table} getTable={props.getTable} />
-            </Navbar>
+           
             <Container style={{ paddingTop: 15 }}>
                 <Row>
                     <Col xs={12}>
@@ -56,7 +59,7 @@ const ShowTable = props => {
                                             props.table.current_order.order_products.map(p => {
                                                 return (
                                                     <tr>
-                                                        <td>{findProductName(p.product_id)}</td>
+                                                        <td>{findProductName(p.product_id)+' ('+findProductType(p.product_id)+')'}</td>
                                                         <td>{p.qty}</td>
                                                         <td>{p.unit_price}</td>
                                                         <td>{p.qty*p.unit_price}</td>
@@ -78,9 +81,9 @@ const ShowTable = props => {
 
 
 const mapStateToProps = state => {
-    return {
-        table: state.tpv.active
-    }
+  return{
+    table: state.tpv.active,
+  }
 }
 const mapDispatchToProps = dispatch => {
     return {

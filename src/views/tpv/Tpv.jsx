@@ -11,10 +11,6 @@ const Tpv = props => {
     }, [])
     return (
         <Fragment>
-            <Navbar bg="light" expand="lg" className='d-flex justify-content-start'>
-                <Navbar.Brand>{'<-'}</Navbar.Brand>
-                <Navbar.Brand href="#home">Seleccionar Mesa</Navbar.Brand>
-            </Navbar>
             <Container fluid style={{ padding: 15, paddingTop: 10 }}>
                 <Row className='text-center'>
                     {

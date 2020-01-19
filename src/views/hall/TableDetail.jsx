@@ -29,17 +29,29 @@ const TableDetail = props => {
         }
        
     }
+
+    const findProductType=(productId)=>{
+        if(products.length>0){
+            console.log(productId,products)
+            return products.find(x=>x.id===productId).family==='Completos'?'Completo':'Solo'
+        }
+    }
     return (
         <div className='table-details'>
             <Row noGutters>
                 <Col sm={12}>
                     <Card>
-                        <Card.Header>  <h3 className="text-center">MESA NUMERO {props.table.table_id}</h3></Card.Header>
+                        <Card.Header>
+                              <h3 className="text-center">MESA NUMERO {props.table.table_id}</h3>
+                             {props.table.current_order && <p className="text-center">Orden # {props.table.current_order.id}</p> } 
+                              </Card.Header>
+
                         <Card.Body>
                             <Table size='sm'>
                                 <thead>
                                     <tr>
                                         <th>Descripcion</th>
+                                        
                                         <th>Cantidad</th>
                                         <th>P. Unitario</th>
                                         <th>Total</th>
@@ -47,9 +59,10 @@ const TableDetail = props => {
                                 </thead>
                                 <tbody>
                                     {props.table.current_order && props.table.current_order.order_products.map(p => {
+                                        
                                         return (
                                             <tr>
-                                                <td>{findProductName(p.product_id)}</td>
+                                                <td>{findProductName(p.product_id)+' ('+findProductType(p.product_id)+')'}</td>
                                                 <td>{p.qty}</td>
                                                 <td>{p.unit_price}</td>
                                                 <td>{p.qty * p.unit_price}</td>

@@ -8,10 +8,15 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { tablesReducer } from './ducks/tables';
 import { tpvReducer } from './ducks/tpv';
-
+import { productsReducer } from './ducks/products';
+import { mainReducer } from './ducks/main';
+import { reportsReducer } from './ducks/reports';
 const rootReducer = combineReducers({
+    main:mainReducer,
     tables:tablesReducer,
-    tpv:tpvReducer
+    tpv:tpvReducer,
+    products:productsReducer,
+    reports:reportsReducer
 });
 const middleware = [thunk];
 export const store = createStore(
