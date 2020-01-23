@@ -1,6 +1,5 @@
 import Axios from 'axios'
 import { API } from '../constants';
-import { setNotification } from './main';
 export const DAY_BALANCE_REQUESTED = 'DAY_BALANCE_REQUEST';
 export const DAY_BALANCE_SUCCEEDED = 'DAY_BALANCE_SUCCEEDED';
 export const DAY_BALANCE_FAILED = 'DAY_BALANCE_FAILED';

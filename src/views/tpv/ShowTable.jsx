@@ -1,9 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Container, Row, Col, Navbar, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col,  Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getTable } from '../../ducks/tpv';
-import OrderModal from './OrderModal';
 import Axios from 'axios';
 import { API } from '../../constants';
 const ShowTable = props => {

@@ -1,6 +1,6 @@
 
 import React, { Fragment, useEffect } from 'react';
-import { Container, Row, Col, Button, Navbar } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getList } from '../../ducks/tpv';
