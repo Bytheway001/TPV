@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0175df1ec11805e8ead5a33365400ac0",
+    "revision": "9c5f2c79823e6ac64d6b33c6e6a1f934",
     "url": "/TPV/index.html"
   },
   {
-    "revision": "9ee7c5002575d1836207",
+    "revision": "b949275a67df56fc3f57",
     "url": "/TPV/static/css/main.8bba3609.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TPV/static/js/2.562b9b3e.chunk.js.LICENSE"
   },
   {
-    "revision": "9ee7c5002575d1836207",
-    "url": "/TPV/static/js/main.a248e515.chunk.js"
+    "revision": "b949275a67df56fc3f57",
+    "url": "/TPV/static/js/main.203474d7.chunk.js"
   },
   {
     "revision": "a2117b30866b171bf1b6",
