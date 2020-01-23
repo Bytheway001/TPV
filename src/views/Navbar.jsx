@@ -3,9 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import OrderModal from './tpv/OrderModal';
 const Bar = props => {
- 
     const { type } = props;
-
     if (type === 'pc') {
         return (
             <Navbar bg='dark' variant="dark" expand="lg">
@@ -13,7 +11,8 @@ const Bar = props => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#home">Caja</Nav.Link>
+                        <Nav.Link href="/">Caja</Nav.Link>
+                        <Nav.Link as={Link} to="/kitchen">Cocina</Nav.Link>
                         <Nav.Link as={Link} to="/tpv">TPV</Nav.Link>
                         <NavDropdown title="Configuracion" id="basic-nav-dropdown">
                             <NavDropdown.Item as={Link} to="/reports">Reportes</NavDropdown.Item>
@@ -26,7 +25,7 @@ const Bar = props => {
             </Navbar>
         )
     }
-    else if (type == 'order') {
+    else if (type === 'order') {
         return (
             <Navbar bg="light" expand="lg" className='d-flex justify-content-between'>
                 <Navbar.Brand as={Link} to='/tpv'>{<span className='fa fa-arrow-left' />}</Navbar.Brand>

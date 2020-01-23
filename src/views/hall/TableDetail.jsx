@@ -74,7 +74,7 @@ const TableDetail = props => {
                         </Card.Body>
 
                         {
-                            props.table.current_order && props.table.current_order.status === 'open' ?
+                            props.table.current_order && (props.table.current_order.status === 'open' || props.table.current_order.status ==='delivered') ?
                                 <Card.Footer className='d-flex justify-content-between'>
                                     <span> Total a cobrar: {getTotalOrder()}</span>
                                     <CloseOrderModal table={props.table} total={getTotalOrder()} closeTable={props.closeTable}/>

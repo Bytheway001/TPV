@@ -113,8 +113,7 @@ const HallRoutes = props => {
 const TPVRoutes = props => {
   return (
     <Switch>
-     
-        <Route exact path='/tpv/' render={() => <TpvLayout> <Tpv />  </TpvLayout>} />
+        <Route exact path='/tpv/' render={() => <TpvLayout><Tpv /></TpvLayout>} />
         <Route path='/tpv/:id' render={(props)=><TpvLayout {...props}><ShowTable {...props}/></TpvLayout>} />
     </Switch>
   )
